@@ -1,0 +1,8 @@
+RewriteEngine on
+
+#1)externally redirect "/file.php" to "/file"   
+RewriteCond %{THE_REQUEST} /([^.]+)\.php [NC]
+RewriteRule ^ /kakaoAPI/%1 [NC,L,R]
+#2)Internally map "/file" back to "/file.php"
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*?)/?$ /kakaoAPI/$1.php [NC,L]
